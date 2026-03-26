@@ -21,7 +21,9 @@ def main():
     if category in ideas_by_category and ideas_by_category[category]:
         idea = random.choice(ideas_by_category[category])
     else:
-        idea = random.choice([item for sublist in ideas_by_category.values() for item in sublist])
+        # Если категория не выбрана или неверная — берём случайную из всех
+        all_ideas = [item for sublist in ideas_by_category.values() for item in sublist]
+        idea = random.choice(all_ideas)
     print(f"Ваша идея ({category}): {idea}")
 
 if name == "main":
